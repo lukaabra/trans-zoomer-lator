@@ -12,6 +12,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      animation: {
+        typing: 'typing 1.5s ease-out',
+      },
+      keyframes: {
+        typing: {
+          from: { width: '0' },
+          to: { width: '100%' },
+        },
+      },
     },
   },
   plugins: [],

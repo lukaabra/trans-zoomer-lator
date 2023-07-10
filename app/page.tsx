@@ -1,7 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import Search from './components/Search';
 import ToggleWithText from './components/ToggleWithText';
+import TranslateResult from './components/TranslateResult';
 
 export default function Home() {
+  const [translateResult, setTranslateResult] = useState('');
+
   return (
     <div className="relative isolate overflow-hidden py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -15,13 +21,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-20">
-        <ToggleWithText />
-      </div>
+      <ToggleWithText />
+      <Search setTranslateResult={setTranslateResult} />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-6">
-        <Search />
-      </div>
+      <TranslateResult translateResult={translateResult} />
     </div>
   );
 }
