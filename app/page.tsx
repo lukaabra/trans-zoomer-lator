@@ -1,5 +1,5 @@
-import Search from "./Search";
-import ToggleWithText from "./ToggleWithText";
+import Search from './components/Search';
+import ToggleWithText from './components/ToggleWithText';
 
 export default function Home() {
   return (
