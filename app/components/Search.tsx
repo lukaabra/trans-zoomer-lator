@@ -4,8 +4,10 @@ import { Dispatch, FormEvent, SetStateAction } from 'react';
 import { translateQuery } from '../../src/openAi';
 
 const Search = ({
+  isBoomerTalk,
   setTranslateResult,
 }: {
+  isBoomerTalk: boolean;
   setTranslateResult: Dispatch<SetStateAction<string>>;
 }) => {
   const handleSearch = async (event: FormEvent) => {
@@ -13,11 +15,9 @@ const Search = ({
 
     const searchQuery = event.target.searchBar.value;
 
-    // TODO: Debug why long responses are cut off
-    // Can you please write a 100 word short essay about why climate change matters?
-    const translation = await translateQuery(searchQuery);
+    setTranslateResult('');
 
-    console.log(translation, 'translation');
+    const translation = await translateQuery(searchQuery, isBoomerTalk);
 
     setTranslateResult(translation);
   };

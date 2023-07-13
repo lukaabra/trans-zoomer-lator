@@ -7,9 +7,14 @@ import TranslateResult from './components/TranslateResult';
 
 export default function Home() {
   const [translateResult, setTranslateResult] = useState('');
+  const [isBoomerTalk, setIsBoomerTalk] = useState(false);
 
   return (
-    <div className="relative isolate overflow-hidden py-24 sm:py-32">
+    <div
+      className={`relative isolate overflow-hidden ${
+        translateResult ? 'py-10 sm:py-20' : 'py-20 sm:py-36'
+      } transition-py duration-500`}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.4)] sm:text-6xl text-center">
           trans-zoomer-lator
@@ -21,8 +26,14 @@ export default function Home() {
         </div>
       </div>
 
-      <ToggleWithText />
-      <Search setTranslateResult={setTranslateResult} />
+      <ToggleWithText
+        isBoomerTalk={isBoomerTalk}
+        setIsBoomerTalk={setIsBoomerTalk}
+      />
+      <Search
+        isBoomerTalk={isBoomerTalk}
+        setTranslateResult={setTranslateResult}
+      />
 
       <TranslateResult translateResult={translateResult} />
     </div>
