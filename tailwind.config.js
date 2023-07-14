@@ -6,22 +6,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      animation: {
-        typing: 'typing 1.5s ease-out',
-      },
-      keyframes: {
-        typing: {
-          from: { width: '0' },
-          to: { width: '100%' },
-        },
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
