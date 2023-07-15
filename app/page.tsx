@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import Search from './components/Search';
 import ToggleWithText from './components/ToggleWithText';
 import TranslateResult from './components/TranslateResult';

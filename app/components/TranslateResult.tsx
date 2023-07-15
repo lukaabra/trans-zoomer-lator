@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const TranslateResult = ({ translateResult }: { translateResult: string }) => {
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
+
   const [animatedTranslation, setAnimatedTranslation] = useState('');
 
   useEffect(() => {
@@ -17,10 +19,27 @@ const TranslateResult = ({ translateResult }: { translateResult: string }) => {
     });
   }, [translateResult]);
 
+  useEffect(() => {
+    const handleClick = () => {
+      navigator.clipboard.writeText(translateResult);
+    };
+
+    const element = paragraphRef.current;
+
+    element?.addEventListener('click', handleClick);
+
+    return () => {
+      element?.removeEventListener('click', handleClick);
+    };
+  }, [translateResult]);
+
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8 mt-10">
-      <div className="px-60">
-        <p className={`overflow-hidden font-mono text-xl text-justify`}>
+      <div className="mx-60">
+        <p
+          ref={paragraphRef}
+          className={`overflow-hidden font-mono text-xl text-justify hover:cursor-pointer`}
+        >
           {animatedTranslation}
         </p>
       </div>
